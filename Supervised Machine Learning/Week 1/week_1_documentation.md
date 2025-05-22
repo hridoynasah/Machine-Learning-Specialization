@@ -136,7 +136,7 @@ Supervised learning, the most economically impactful type of machine learning to
 
 Supervised learning powers a wide range of real-world applications by learning from labeled examples. The following table outlines key examples:
 
-| Input (\( x \))         | Output (\( y \))       | Application             |
+| Input \( x \)        | Output \( y \)       | Application             |
 |--------------------------|------------------------|--------------------------|
 | email                   | spam? (0/1)           | spam filtering           |
 | audio                   | text transcripts      | speech recognition       |
