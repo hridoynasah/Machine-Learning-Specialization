@@ -126,7 +126,6 @@ In the upcoming sections, we’ll explore supervised learning and unsupervised l
 
 
 
-
 # Supervised Learning and Regression
 
 ## Understanding Supervised Learning
@@ -135,14 +134,16 @@ Supervised learning, the most economically impactful type of machine learning to
 
 ### Examples of Supervised Learning Applications
 
-Supervised learning powers a wide range of real-world applications by learning from labeled examples. Here are some key examples:
+Supervised learning powers a wide range of real-world applications by learning from labeled examples. The following table outlines key examples:
 
-- **Spam Filtering**: The input \( x \) is an email, and the output \( y \) is a label indicating whether the email is spam or not spam, enabling email systems to filter unwanted messages.
-- **Speech Recognition**: The input \( x \) is an audio clip, and the output \( y \) is the text transcript, allowing systems to convert spoken words into written text.
-- **Machine Translation**: The input \( x \) is text in one language (e.g., English), and the output \( y \) is the translated text in another language (e.g., Spanish, Arabic, or Hindi).
-- **Online Advertising**: The input \( x \) includes information about an advertisement and user data, and the output \( y \) predicts whether the user will click on the ad, optimizing ad platforms’ revenue by prioritizing clickable ads.
-- **Autonomous Driving**: The input \( x \) consists of images and sensor data (e.g., radar), and the output \( y \) predicts the positions of other vehicles, enabling safe navigation for self-driving cars.
-- **Visual Inspection in Manufacturing**: The input \( x \) is an image of a manufactured product (e.g., a cell phone), and the output \( y \) indicates whether the product has defects like scratches or dents, improving quality control.
+| Input (\( x \))         | Output (\( y \))       | Application             |
+|--------------------------|------------------------|--------------------------|
+| email                   | spam? (0/1)           | spam filtering           |
+| audio                   | text transcripts      | speech recognition       |
+| English                 | Spanish               | machine translation      |
+| ad, user info           | click? (0/1)          | online advertising       |
+| image, radar info       | position of other cars | self-driving car         |
+| image of phone          | defect? (0/1)         | visual inspection        |
 
 In each case, the algorithm is trained on a dataset containing input-output pairs (\( x, y \)). After training, it can predict the appropriate output \( y \) for new inputs \( x \) it has never encountered.
 
@@ -156,6 +157,24 @@ Imagine a friend wants to know the price of their 750-square-foot house. A super
 - **Non-Linear Model**: Alternatively, a more complex model, such as a curve, might better capture the data’s pattern, predicting a price closer to $200,000.
 
 The choice between a straight line, a curve, or a more complex function depends on the data’s characteristics. Later in this course, you’ll learn how to systematically select the most appropriate model for a given dataset, ensuring accurate predictions rather than arbitrarily choosing the model that yields the highest price.
+
+This housing price example can be visualized as a linear regression graph:
+
+```
+Price in $1000's
+400 |                                     
+300 |                                     
+200 |         *                       *   
+150 |     *               *         *     
+100 | *               *         *         
+ 50 |                                     
+  0 |___________________________________
+      0    500    1000   1500   2000   2500
+           House size in square feet
+```
+
+- The graph shows a straight line fitted to data points (marked with *), where house size (x-axis) ranges from 0 to 2500 square feet, and price (y-axis) ranges from 0 to 400 thousand dollars.
+- For a 750-square-foot house, the linear model predicts a price around $150,000, indicated by a point on the line.
 
 This housing price example is a specific type of supervised learning called **regression**. In regression, the goal is to predict a continuous numerical output, such as a house price, which can take any value within a range (e.g., $150,000, $183,000, or $70,000). The algorithm learns from a dataset where the correct output (the “right answer” or label \( y \)) is provided for each input \( x \), enabling it to generalize and predict prices for new houses.
 
