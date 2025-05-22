@@ -181,3 +181,99 @@ This housing price example is a specific type of supervised learning called **re
 ## What’s Next?
 
 Supervised learning, particularly regression, is a powerful tool for predicting numerical outcomes. However, supervised learning also includes another major type called classification, which deals with predicting categorical outcomes. In the next section, we’ll explore classification and how it differs from regression, deepening your understanding of supervised learning’s versatility.
+
+
+
+# Classification in Supervised Learning
+
+## Understanding Classification
+
+Supervised learning algorithms learn to map inputs (\( x \)) to outputs (\( y \)), as seen with regression in the previous section, where the goal was to predict a number from infinitely many possible values. The second major type of supervised learning is **classification**, which focuses on predicting a category from a small, finite set of possible outputs. Let’s explore this using breast cancer detection as an example.
+
+### Classification Example: Breast Cancer Detection
+
+In breast cancer detection, a machine learning system can assist doctors by diagnosing whether a tumor is **benign** (non-cancerous, labeled as 0) or **malignant** (cancerous, labeled as 1) based on medical records. Early detection is critical, as it can potentially save lives. Suppose your dataset includes tumor sizes (in centimeters) and their corresponding labels:
+
+| Tumor Size (cm) | Diagnosis |
+|-----------------|-----------|
+| 2               | 0         |
+| 5               | 0         |
+| 1               | 0         |
+| 7               | 1         |
+| ...             | ...       |
+
+This data can be visualized on a graph where the horizontal axis represents tumor size (\( x \)), and the vertical axis represents the diagnosis (\( y \)), which takes only two values: 0 (benign) or 1 (malignant). Alternatively, the data can be plotted on a line:
+
+```
+Diameter (cm)
+0cm        2        5        7       10cm
+|----O----O----O----X----O----X----X----|
+O = benign, X = malignant
+```
+
+If a new patient has a tumor of a certain size (e.g., 3 cm), the classification algorithm predicts whether it is benign (0) or malignant (1). Unlike regression, which predicts from infinitely many numbers, classification deals with a limited set of categories—here, just 0 or 1—making it distinct.
+
+### Classification with Multiple Categories
+
+Classification problems can involve more than two categories. In the breast cancer example, a malignant tumor might be further categorized into different types, such as type 1 or type 2. Using symbols to represent categories:
+
+- \( O \): Benign
+- \( X \): Malignant type 1
+- \( \triangle \): Malignant type 2
+
+This results in three possible output categories: benign (0), malignant type 1 (1), or malignant type 2 (2). The data can be plotted on a line:
+
+```
+Diameter (cm)
+0cm        2        5        7       10cm
+|----O----O----O----X----O----△----X----|
+O = benign, X = malignant type 1, △ = malignant type 2
+```
+
+In classification, the terms "classes" and "categories" are used interchangeably to refer to these output labels. Categories don’t have to be numeric; for example, a classification algorithm might predict whether an image depicts a cat or a dog (non-numeric categories). However, when categories are numeric (e.g., 0, 1, 2), they represent discrete classes, not continuous values like 0.5 or 1.7, which distinguishes classification from regression.
+
+### Using Multiple Inputs in Classification
+
+So far, we’ve used a single input—tumor size—to predict the diagnosis. However, classification can incorporate multiple inputs for better predictions. Suppose you also have the patient’s age in addition to tumor size. The dataset might look like this, with circles (\( O \)) for benign tumors and crosses (\( X \)) for malignant tumors:
+
+```
+Age
+^  malignant
+|  X  X  X  X  X
+|  X  O  X  X  X
+|  O  O  O  X  O
+|  O  O  O  O  O  benign
++-----------------> Tumor Size
+```
+
+A new patient’s data point (e.g., age and tumor size) can be plotted on this graph. The classification algorithm learns to draw a boundary separating benign and malignant cases, helping the doctor predict the diagnosis. For example, a boundary might look like this:
+
+```
+Age
+^  malignant
+|  X  X  X  X  X
+|  X  O  X  X  X  \
+|  O  O  O  X  O   \
+|  O  O  O  O  O  benign
++-----------------> Tumor Size
+```
+
+The boundary (diagonal line) indicates that tumors above it are more likely malignant, while those below are more likely benign. In practice, breast cancer detection systems use many more inputs, such as tumor thickness, uniformity of cell size, and cell shape, to improve prediction accuracy.
+
+## Recap: Supervised Learning Types
+
+Supervised learning maps inputs (\( x \)) to outputs (\( y \)) using labeled data (the “right answers”). It includes two main types:
+
+- **Regression**: Predicts a number from infinitely many possible outputs (e.g., house prices).
+- **Classification**: Predicts a category from a small set of possible outputs (e.g., benign or malignant tumors).
+
+The following summarizes the distinction:
+
+| Type          | Prediction Goal               | Example Output          |
+|---------------|-------------------------------|-------------------------|
+| Regression    | Predict a number (infinite possibilities) | House price: 150,000, 183,000, etc. |
+| Classification | Predict a category (finite possibilities) | Tumor diagnosis: 0, 1, 2 |
+
+## What’s Next?
+
+You now understand supervised learning, encompassing both regression and classification. The next major type of machine learning is unsupervised learning, which we’ll explore in the upcoming section.
