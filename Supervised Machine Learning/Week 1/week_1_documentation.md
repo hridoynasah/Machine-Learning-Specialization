@@ -379,3 +379,39 @@ This market segmentation helps tailor services to different customer needs. The 
 ## Summary and Next Steps
 
 Clustering, a type of unsupervised learning, groups unlabeled data into meaningful clusters, as seen in applications like news aggregation, genetic research, and market segmentation. Unsupervised learning is powerful because it uncovers hidden structures without requiring labeled data. Beyond clustering, there are other types of unsupervised learning algorithms, which we’ll explore in the next section.
+
+
+
+# Unsupervised Learning: Beyond Clustering
+
+## Defining Unsupervised Learning
+
+Unsupervised learning differs from supervised learning in how data is structured. In supervised learning, data includes both inputs (\( x \)) and output labels (\( y \)), such as in classification tasks where labels indicate categories (e.g., benign or malignant tumors). In contrast, unsupervised learning provides only inputs (\( x \)) without output labels (\( y \)). The algorithm’s task is to identify patterns, structures, or interesting insights within the data. In the previous section, we explored **clustering**, a type of unsupervised learning that groups similar data points together, such as grouping news articles by topic.
+
+## Types of Unsupervised Learning
+
+This specialization covers three main types of unsupervised learning:
+
+- **Clustering**: Groups similar data points into clusters, as seen in applications like market segmentation or news article grouping.
+- **Anomaly Detection**: Identifies unusual or rare events, often used for fraud detection in financial systems by flagging unusual transactions.
+- **Dimensionality Reduction**: Compresses large datasets into smaller ones while retaining as much information as possible, simplifying data analysis.
+
+Anomaly detection and dimensionality reduction will be explored in greater detail later in the course. For now, let’s focus on distinguishing unsupervised learning from supervised learning through examples.
+
+## Examples: Supervised vs. Unsupervised Learning
+
+To clarify the difference between supervised and unsupervised learning, consider the following applications:
+
+| Application             | Description                                          | Learning Type         |
+|-------------------------|------------------------------------------------------|-----------------------|
+| Spam Filtering          | Labels emails as spam or non-spam using labeled data | Supervised Learning   |
+| News Story Grouping     | Groups related news articles (e.g., Google News)     | Unsupervised Learning (Clustering) |
+| Market Segmentation     | Automatically discovers customer segments            | Unsupervised Learning (Clustering) |
+| Diabetes Diagnosis      | Classifies patients as diabetic or not using labels  | Supervised Learning   |
+
+- **Supervised Learning Examples**: Spam filtering and diabetes diagnosis rely on labeled data (e.g., spam/non-spam, diabetic/not diabetic), making them supervised learning tasks, similar to the breast cancer classification example.
+- **Unsupervised Learning Examples**: News story grouping and market segmentation use clustering to find patterns in unlabeled data, such as grouping related articles or identifying customer segments without predefined categories.
+
+## What’s Next?
+
+Beyond clustering, this specialization will dive deeper into anomaly detection and dimensionality reduction, expanding your understanding of unsupervised learning. In the next section, we’ll explore an exciting and practical tool for machine learning: Jupyter Notebooks.
