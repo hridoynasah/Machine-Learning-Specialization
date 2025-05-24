@@ -36,7 +36,6 @@ Machine learning is not just a theoretical concept—it’s a practical skill wi
 - Implement machine learning algorithms in code, gaining hands-on experience.
 - Explore how to build systems that can learn from data and make intelligent decisions.
 
-This course builds on the legacy of an earlier version, which inspired millions of learners and even led to the founding of Coursera. Many of those learners went on to develop innovative machine learning systems or pursue successful careers in artificial intelligence (AI). By embarking on this journey, you’re joining a community of innovators shaping the future of technology.
 
 ## Getting Started
 
