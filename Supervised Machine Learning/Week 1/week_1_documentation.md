@@ -277,3 +277,105 @@ The following summarizes the distinction:
 ## What’s Next?
 
 You now understand supervised learning, encompassing both regression and classification. The next major type of machine learning is unsupervised learning, which we’ll explore in the upcoming section.
+
+
+
+
+# Introduction to Unsupervised Learning and Clustering
+
+## What is Unsupervised Learning?
+
+Unsupervised learning is a major type of machine learning, distinct from supervised learning, which we discussed previously. In supervised learning, data includes both inputs (\( x \)) and output labels (\( y \)), such as classifying tumors as benign (\( O \)) or malignant (\( X \)) based on tumor size and patient age. For example:
+
+```
+Age
+^  malignant
+|  X  X  X  X  X
+|  X  O  X  X  X  \
+|  O  O  O  X  O   \
+|  O  O  O  O  O  benign
++-----------------> Tumor Size
+```
+
+In contrast, unsupervised learning works with data that has no output labels (\( y \)). Using the same tumor size and patient age dataset, but without labels indicating whether tumors are benign or malignant, the data might look like this:
+
+```
+Age
+^
+|  *  *  *  *  *
+|  *  *  *  *  *
+|  *  *  *  *  *
+|  *  *  *  *  *
++-----------------> Tumor Size
+* = data point (no labels)
+```
+
+Here, the goal is not to predict a specific outcome but to identify patterns, structures, or interesting insights within the data. This process is called "unsupervised" because the algorithm isn’t given "right answers" to learn from; instead, it must discover meaningful patterns on its own.
+
+## Clustering: A Key Type of Unsupervised Learning
+
+A common type of unsupervised learning is **clustering**, where the algorithm groups data points into clusters based on similarity. In the tumor size and age dataset, a clustering algorithm might identify two distinct groups:
+
+```
+Age
+^
+|  *  *  * | *  *
+|  *  *  * | *  *
+|  *  *  * | *  *
+|  *  *  * | *  *
++-----------------> Tumor Size
+Cluster 1    Cluster 2
+```
+
+This grouping suggests that the data naturally separates into two clusters, which might represent underlying patterns (e.g., different risk profiles), even without labels.
+
+### Example 1: Clustering in Google News
+
+Clustering is widely used in applications like Google News, which processes hundreds of thousands of news articles daily. The algorithm groups related stories into clusters without being told which topics to focus on. For instance, a cluster might form around articles about a panda birth at a zoo:
+
+| Article Headline                                      | Key Words               |
+|-------------------------------------------------------|-------------------------|
+| Giant panda gives birth to rare twin cubs at zoo      | panda, twin, zoo        |
+| Twin panda cubs born at Japan’s oldest zoo            | panda, twin, zoo        |
+| Zoo celebrates birth of twin pandas                   | panda, twin, zoo        |
+| Rare twin panda cubs born in Japanese zoo             | panda, twin, zoo        |
+| Panda twins arrive at historic zoo in Japan           | panda, twin, zoo        |
+
+The clustering algorithm identifies articles with similar words (e.g., "panda," "twin," "zoo") and groups them together, enabling Google News to present related stories. This process is unsupervised because no one explicitly tells the algorithm to cluster around these words—the algorithm learns the patterns independently.
+
+### Example 2: Clustering DNA Microarray Data
+
+Unsupervised learning is also applied in genetics, particularly with DNA microarray data, which measures gene expression across individuals. Imagine a grid where each column represents a person, each row represents a gene, and colors (red, green, gray) indicate the activity level of a gene for that person:
+
+```
+Gene Expression Grid
+Genes:  Eye Color  Height  Broccoli Dislike
+Person 1: [Red]    [Green]  [Gray]
+Person 2: [Green]  [Red]    [Gray]
+Person 3: [Red]    [Green]  [Red]
+...
+```
+
+A clustering algorithm might group individuals into types based on gene expression patterns:
+
+- **Type 1**: Individuals with similar eye color and height genes.
+- **Type 2**: Individuals with a genetic dislike for broccoli.
+- **Type 3**: Another distinct group based on other gene similarities.
+
+This is unsupervised because the algorithm isn’t told in advance what “types” of people exist—it discovers these groupings by identifying patterns in the data.
+
+### Example 3: Market Segmentation
+
+Companies often use clustering to segment customers based on large datasets of customer information. For example, the DeepLearning.AI team analyzed their community to understand learners’ motivations, identifying distinct groups:
+
+| Cluster         | Primary Motivation               |
+|-----------------|----------------------------------|
+| Cluster 1       | Seeking knowledge to grow skills |
+| Cluster 2       | Developing career (e.g., promotion, new job) |
+| Cluster 3       | Staying updated on AI’s impact in their field |
+
+This market segmentation helps tailor services to different customer needs. The algorithm identifies these groups without being given predefined categories, making it an unsupervised learning task.
+
+## Summary and Next Steps
+
+Clustering, a type of unsupervised learning, groups unlabeled data into meaningful clusters, as seen in applications like news aggregation, genetic research, and market segmentation. Unsupervised learning is powerful because it uncovers hidden structures without requiring labeled data. Beyond clustering, there are other types of unsupervised learning algorithms, which we’ll explore in the next section.
