@@ -414,3 +414,127 @@ To clarify the difference between supervised and unsupervised learning, consider
 ## What’s Next?
 
 Beyond clustering, this specialization will dive deeper into anomaly detection and dimensionality reduction, expanding your understanding of unsupervised learning. In the next section, we’ll explore an exciting and practical tool for machine learning: Jupyter Notebooks.
+
+
+Okay, here is the documented version of the lecture.
+
+## The Process of Supervised Learning: An Introduction to Linear Regression
+
+The journey into machine learning often begins with understanding **supervised learning**. In this approach, a model learns from data that includes "right answers." We'll explore this through a fundamental and widely used algorithm: the **Linear Regression Model**. This model essentially involves fitting a straight line to your data. Many concepts introduced with linear regression are foundational and will reappear in more complex models.
+
+---
+
+### Predicting House Prices: A Linear Regression Example
+
+Let's consider a common problem: predicting the price of a house based on its size. We'll use a dataset of house sizes and their sale prices from Portland, USA.
+
+The relationship can be visualized on a graph:
+* The **horizontal axis (x-axis)** represents the size of the house in square feet (feet²).
+* The **vertical axis (y-axis)** represents the price of the house in thousands of dollars ($1000s).
+
+Each house in our dataset is a point on this graph, marked by an 'x', showing its size and the price it sold for.
+
+```
+      Price in $1000's
+      ^
+  500 |               x
+  400 |      x  x   x   x
+      |    x       x x
+  300 | x      x    x
+      |   x   x  x x
+  200 +-------●-----------  <-- Price prediction for 1250 sq ft house (~$220k)
+      |     x .  x
+  100 |    .
+      |   .
+    0 +---|---|---|---|---> Size in feet²
+        0  1000 1250 2000
+```
+*Figure 1: Scatter plot of house sizes and prices with a potential data point (green circle) for a 1250 sq ft house.*
+
+Imagine you're helping a client sell her house, which is 1250 square feet. To estimate its sale price, we can use a linear regression model. This model fits a straight line through the data points that best represents the overall trend.
+
+```
+      Price in $1000's
+      ^
+  500 |               x
+      |              /
+  400 |      x  x   x/  x
+      |    x       x/x
+  300 | x      x    /
+      |   x   x  x /
+  200 +-------●---/---------  <-- $220k (Prediction)
+      |     x /  x
+  100 |    . /
+      |   ./
+    0 +---/---|---|---|---> Size in feet²
+        0  1000 1250 2000
+              (1250 sq ft)
+```
+*Figure 2: A linear regression line fitted to the house price data. For a 1250 sq ft house, the line suggests a price of approximately $220,000.*
+
+By finding where 1250 square feet on the horizontal axis intersects this "best-fit" line, and then tracing that point to the vertical axis, we can predict the price. In this case, it's about $220,000.
+
+This is an example of **supervised learning** because we train the model using data that includes both the input (house size) and the "right answer" (the actual sale price).
+
+---
+
+### Regression vs. Classification
+
+The linear regression model discussed is a type of **regression model**.
+* **Regression models** predict numerical values. These outputs can be any number within a continuous range.
+    * Examples: Predicting house prices ($220,000), temperature ($1.5^\circ C$), or a stock value ($-33.2$ change).
+    * There are infinitely many possible numerical outputs.
+
+In contrast, the other common type of supervised learning model is a **classification model**.
+* **Classification models** predict categories or discrete labels.
+    * Examples: Identifying if an image is of a 'cat' or a 'dog', or diagnosing if a patient has a specific 'disease' or 'no disease'.
+    * There is a small, finite number of possible outputs.
+
+| Feature             | Regression Model                      | Classification Model                     |
+| :------------------ | :------------------------------------ | :--------------------------------------- |
+| **Output Type** | Predicts numbers (continuous)         | Predicts categories (discrete)           |
+| **Possible Outputs**| Infinitely many                       | Small, finite number                     |
+| **Example Task** | Predicting house prices               | Identifying cat vs. dog in images        |
+| **Example Output** | $220,000; 1.5; -33.2$                 | Cat, Dog; Disease A, Disease B, No Disease |
+
+---
+
+### Understanding the Data: Tables and Notation
+
+Besides plots, data can be represented in tables. For our housing example:
+
+| Size in feet² (Input) | Price in $1000's (Output) |
+| :-------------------- | :------------------------ |
+| 2104                  | 400                       |
+| 1416                  | 232                       |
+| 1534                  | 315                       |
+| 852                   | 178                       |
+| ...                   | ...                       |
+| 3210                  | 870                       |
+
+*Table 1: Sample data for house sizes and prices.*
+
+Each row in this table corresponds to a single house (a single 'x' on our plot). For instance, the first row shows a house of 2104 square feet that sold for $400,000. This point would be plotted accordingly on the graph.
+
+Let's introduce some standard machine learning terminology and notation:
+
+* **Training Set**: The entire dataset used to "teach" or train the model. Our client's house isn't in this set because it hasn't been sold yet.
+* **Input Variable (Feature)**: Denoted by lowercase $x$. This is the information we use to make a prediction.
+    * In our example, $x$ is the **size of the house**. For the first house in Table 1, $x = 2104$.
+* **Output Variable (Target Variable)**: Denoted by lowercase $y$. This is what we are trying to predict.
+    * In our example, $y$ is the **price of the house**. For the first house, $y = 400$.
+* **Number of Training Examples**: Denoted by lowercase $m$. This is the total number of rows in our training data table. If our table has 47 rows, then $m = 47$.
+* **A Single Training Example**: Represented as a pair $(x, y)$.
+    * For the first house: $(2104, 400)$.
+* **The $i^{th}$ Training Example**: To refer to a specific row (or example) in the dataset, we use a superscript in parentheses: $(x^{(i)}, y^{(i)})$. The $i$ is an **index** referring to the row number in the table (e.g., $1^{st}$, $2^{nd}$, $3^{rd}$, ..., $47^{th}$).
+    * For the first example ($i=1$):
+        * $x^{(1)} = 2104$
+        * $y^{(1)} = 400$
+        * So, $(x^{(1)}, y^{(1)}) = (2104, 400)$.
+    * For the second example ($i=2$):
+        * $x^{(2)} = 1416$
+        * $y^{(2)} = 232$
+
+    **Important Note**: The superscript $(i)$ (e.g., $x^{(i)}$) is an **index** into the training set. It does **not** mean exponentiation (it is not $x$ raised to the power of $i$). For example, $x^{(2)}$ refers to the input feature of the second training example, not $x$ squared.
+
+This notation provides a standardized way to discuss and work with data in machine learning. The next step is to understand how to feed this training set to a learning algorithm, enabling it to learn from the data.
