@@ -416,15 +416,15 @@ To clarify the difference between supervised and unsupervised learning, consider
 Beyond clustering, this specialization will dive deeper into anomaly detection and dimensionality reduction, expanding your understanding of unsupervised learning. In the next section, we’ll explore an exciting and practical tool for machine learning: Jupyter Notebooks.
 
 
-Okay, here is the documented version of the lecture.
 
-## The Process of Supervised Learning: An Introduction to Linear Regression
+
+# The Process of Supervised Learning: An Introduction to Linear Regression
 
 The journey into machine learning often begins with understanding **supervised learning**. In this approach, a model learns from data that includes "right answers." We'll explore this through a fundamental and widely used algorithm: the **Linear Regression Model**. This model essentially involves fitting a straight line to your data. Many concepts introduced with linear regression are foundational and will reappear in more complex models.
 
 ---
 
-### Predicting House Prices: A Linear Regression Example
+## Predicting House Prices: A Linear Regression Example
 
 Let's consider a common problem: predicting the price of a house based on its size. We'll use a dataset of house sizes and their sale prices from Portland, USA.
 
@@ -478,7 +478,7 @@ This is an example of **supervised learning** because we train the model using d
 
 ---
 
-### Regression vs. Classification
+## Regression vs. Classification
 
 The linear regression model discussed is a type of **regression model**.
 * **Regression models** predict numerical values. These outputs can be any number within a continuous range.
@@ -499,7 +499,7 @@ In contrast, the other common type of supervised learning model is a **classific
 
 ---
 
-### Understanding the Data: Tables and Notation
+## Understanding the Data: Tables and Notation
 
 Besides plots, data can be represented in tables. For our housing example:
 
@@ -538,3 +538,84 @@ Let's introduce some standard machine learning terminology and notation:
     **Important Note**: The superscript $(i)$ (e.g., $x^{(i)}$) is an **index** into the training set. It does **not** mean exponentiation (it is not $x$ raised to the power of $i$). For example, $x^{(2)}$ refers to the input feature of the second training example, not $x$ squared.
 
 This notation provides a standardized way to discuss and work with data in machine learning. The next step is to understand how to feed this training set to a learning algorithm, enabling it to learn from the data.
+
+
+
+# The Supervised Learning Workflow
+
+In supervised learning, the process begins with a **training set**. This dataset contains **input features** (e.g., the size of a house) and corresponding **output targets** (e.g., the actual price of the house). These output targets are the "right answers" that the model learns from.
+
+The workflow can be visualized as follows:
+
+```
++-----------------+
+|  Training Set   |-----> (Features x, Targets y)
+| (e.g., house    |
+|  sizes & prices)|
++-----------------+
+        |
+        V
++---------------------+
+| Learning Algorithm  |
++---------------------+
+        |
+        V
++---------------------+     New Input x (e.g., size of a new house)
+|   Function f        |--------------------------------------------> Output: Prediction  ŷ
+| (Model/Hypothesis)  |                                               (e.g., estimated price)
++---------------------+
+```
+*Figure 3: The supervised learning process. The learning algorithm takes the training set (features and targets) and produces a function f. This function f, also known as the model or hypothesis, then takes a new input x and outputs a prediction ŷ.*
+
+1.  **Training Phase**: The training set (both input features $x$ and output targets $y$) is fed into a **learning algorithm**.
+2.  **Output of Algorithm**: The learning algorithm produces a **function**, which we'll denote as $f$. Historically, this function $f$ was sometimes called a *hypothesis*, but we will refer to it as a function or a model.
+3.  **Prediction Phase**: The job of this function $f$ is to take a new input $x$ (e.g., the size of a house not in the training set) and produce an **estimate** or a **prediction**. This prediction is denoted by $\hat{y}$ (pronounced "y-hat").
+
+In machine learning:
+* $\hat{y}$ represents the **predicted value** (the model's estimate).
+* $y$ represents the **actual true value** (the target from the training set).
+The prediction $\hat{y}$ may or may not be the same as the actual value $y$. For instance, when predicting a house price, the true price $y$ is unknown until the house is sold. The model $f$ takes the size $x$ and outputs $\hat{y}$, which is an *estimate* of that future sale price.
+
+---
+
+## Representing the Model $f$: Linear Regression
+
+A crucial aspect of designing a learning algorithm is deciding how to represent the function $f$. What mathematical formula will it use?
+
+For now, we'll focus on representing $f$ as a **straight line**. This is the basis of **linear regression**. The formula for this straight line function is:
+
+$f_{w,b}(x) = wx + b$
+
+Let's break this down:
+* $x$: The input feature (e.g., house size).
+* $w, b$: These are **parameters** of the model. They are numbers. The specific values chosen for $w$ (often called the weight) and $b$ (often called the bias or y-intercept) determine the slope and position of the straight line. These values are "learned" by the algorithm from the training data.
+* $f_{w,b}(x)$: This notation means that $f$ is a function that takes $x$ as input, and its behavior depends on the values of $w$ and $b$. It outputs the prediction $\hat{y}$.
+* Sometimes, for simplicity, this is written as $f(x) = wx + b$, with $w$ and $b$ being implied.
+
+If we plot our training data (house sizes $x$ on the horizontal axis and actual prices $y$ on the vertical axis), the function $f(x) = wx + b$ represents the straight line that the algorithm fits to this data.
+
+```
+      Price (y)
+      ^
+  500 |               x
+      |         ↙----- f(x) = wx + b (The fitted line / model)
+  400 |      x  x   x   x
+      |    x       x x
+  300 | x      x    x
+      |   x   x  x x
+  200 +-----------x-----------
+      |     x    x
+  100 |
+    0 +---|---|---|---|---> Size (x)
+        0  1000 2000
+```
+*Figure 4: A linear model $f(x) = wx + b$ fitted to the housing data. This line makes predictions for $y$ based on $x$.*
+
+**Why start with a linear function (a straight line)?**
+While real-world data often requires more complex, non-linear functions (curves), linear functions are:
+* **Simple**: Easier to understand and implement.
+* **Foundational**: They provide a solid base for understanding more complex models.
+
+This specific model, where we predict $y$ using a straight-line function of a single input $x$, is called **linear regression with one variable**. Another term for this is **univariate linear regression** ("uni" meaning one, and "variate" referring to the variable or feature). Later, we will explore models that use multiple input variables (e.g., predicting house price based on size, number of bedrooms, age of the house, etc.).
+
+The core challenge in making linear regression work effectively is to find the optimal values for $w$ and $b$ that make the line $f(x) = wx + b$ the "best fit" for the training data. This involves a concept called a **cost function**, which is a fundamental idea in machine learning used to evaluate how well the model is performing.
