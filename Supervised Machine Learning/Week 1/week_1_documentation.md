@@ -618,19 +618,12 @@ While real-world data often requires more complex, non-linear functions (curves)
 
 This specific model, where we predict $y$ using a straight-line function of a single input $x$, is called **linear regression with one variable**. Another term for this is **univariate linear regression** ("uni" meaning one, and "variate" referring to the variable or feature). Later, we will explore models that use multiple input variables (e.g., predicting house price based on size, number of bedrooms, age of the house, etc.).
 
-<<<<<<< Updated upstream
-The core challenge in making linear regression work effectively is to find the optimal values for $w$ and $b$ that make the line $f(x) = wx + b$ the "best fit" for the training data. This involves a concept called a **cost function**, which is a fundamental idea in machine learning used to evaluate how well the model is performing
-=======
-The core challenge in making linear regression work effectively is to find the optimal values for $w$ and $b$ that make the line $f(x) = wx + b$ the "best fit" for the training data. This involves a concept called a **cost function**, which is a fundamental idea in machine learning used to evaluate how well the model is performing.
 
-
-Okay, let's start documenting.
-
-## Understanding the Cost Function in Linear Regression
+# Understanding the Cost Function in Linear Regression
 
 To effectively implement linear regression, a crucial first step is defining a **cost function**. This function serves as a measure of how well our model is performing, guiding us in refining it for better accuracy.
 
-### The Linear Model and Its Parameters
+## The Linear Model and Its Parameters
 
 Recall our training set, which consists of input features $x$ (e.g., size of a house in feet²) and output targets $y$ (e.g., price of the house in $1000s). The model we aim to fit to this data is a linear function:
 
@@ -712,7 +705,7 @@ The core question is: How do we find $w$ and $b$ such that $\hat{y}^{(i)}$ is cl
 
 ---
 
-### Constructing the Cost Function
+## Constructing the Cost Function
 
 To quantify how well a line fits the data, we use a **cost function**. This function measures the discrepancy between our model's predictions and the actual target values.
 
