@@ -618,4 +618,145 @@ While real-world data often requires more complex, non-linear functions (curves)
 
 This specific model, where we predict $y$ using a straight-line function of a single input $x$, is called **linear regression with one variable**. Another term for this is **univariate linear regression** ("uni" meaning one, and "variate" referring to the variable or feature). Later, we will explore models that use multiple input variables (e.g., predicting house price based on size, number of bedrooms, age of the house, etc.).
 
+<<<<<<< Updated upstream
 The core challenge in making linear regression work effectively is to find the optimal values for $w$ and $b$ that make the line $f(x) = wx + b$ the "best fit" for the training data. This involves a concept called a **cost function**, which is a fundamental idea in machine learning used to evaluate how well the model is performing
+=======
+The core challenge in making linear regression work effectively is to find the optimal values for $w$ and $b$ that make the line $f(x) = wx + b$ the "best fit" for the training data. This involves a concept called a **cost function**, which is a fundamental idea in machine learning used to evaluate how well the model is performing.
+
+
+Okay, let's start documenting.
+
+## Understanding the Cost Function in Linear Regression
+
+To effectively implement linear regression, a crucial first step is defining a **cost function**. This function serves as a measure of how well our model is performing, guiding us in refining it for better accuracy.
+
+### The Linear Model and Its Parameters
+
+Recall our training set, which consists of input features $x$ (e.g., size of a house in feet²) and output targets $y$ (e.g., price of the house in $1000s). The model we aim to fit to this data is a linear function:
+
+$$f_{w,b}(x) = wx + b$$
+
+Here:
+* $x$ is the input feature.
+* $f_{w,b}(x)$ is the predicted output (often denoted as $\hat{y}$).
+* $w$ and $b$ are the **parameters** of the model. These are the values we adjust during the training process to improve the model's predictions. You'll also hear $w$ and $b$ referred to as **coefficients** or **weights**.
+
+The parameters $w$ and $b$ determine the specific straight line our function $f(x)$ (shorthand for $f_{w,b}(x)$) represents. Let's see how:
+
+1.  **When $w = 0$ and $b = 1.5$**:
+    The function becomes $f(x) = 0 \cdot x + 1.5 = 1.5$.
+    This results in a horizontal line. The predicted value $\hat{y}$ is always $1.5$, regardless of $x$.
+    The value of $b$ is the **y-intercept**, the point where the line crosses the vertical (y) axis.
+
+    ```
+    |      f(x) = 0*x + 1.5
+    3 +
+    |
+    2 +    ------o------  (ŷ = 1.5)
+    |      Green dot at (0, 1.5)
+    1 +
+    |
+    0 +---+---+---+--- > x
+      0   1   2   3
+    ```
+    * $w = 0$
+    * $b = 1.5$ (y-intercept)
+
+2.  **When $w = 0.5$ and $b = 0$**:
+    The function is $f(x) = 0.5x + 0 = 0.5x$.
+    If $x=0$, then $f(x)=0$.
+    If $x=2$, then $f(x)=0.5 \times 2 = 1$.
+    The line passes through the origin $(0,0)$. The value of $w$ (0.5 in this case) represents the **slope** of the line. The slope is calculated as the "rise" over the "run"; here, for a run of 1, the rise is 0.5.
+
+    ```
+    |      f(x) = 0.5x
+    3 +
+    |
+    2 +         .
+    |        .  (2,1)
+    1 +     . (Green dot)
+    |    .
+    0 +--.------------ > x
+      0   1   2   3
+      (0,0) (Green dot)
+    ```
+    * $w = 0.5$ (slope)
+    * $b = 0$
+
+3.  **When $w = 0.5$ and $b = 1$**:
+    The function is $f(x) = 0.5x + 1$.
+    If $x=0$, then $f(x)=1$ (the y-intercept $b$).
+    If $x=2$, then $f(x) = 0.5 \times 2 + 1 = 2$.
+    Again, $w=0.5$ is the slope, and $b=1$ is the y-intercept.
+
+    ```
+    |      f(x) = 0.5x + 1
+    3 +
+    |
+    2 +         . (2,2) (Green dot)
+    |        .
+    1 +--o----. (0,1) (Green dot)
+    |    .
+    0 +---+---+---+--- > x
+      0   1   2   3
+    ```
+    * $w = 0.5$ (slope)
+    * $b = 1$ (y-intercept)
+
+Our goal with linear regression is to choose values for $w$ and $b$ so that the resulting straight line ($f_{w,b}(x)$) provides a good fit to our training data. Visually, this means the line passes as closely as possible to the training examples.
+
+Let's represent a single training example as $(x^{(i)}, y^{(i)})$, where $y^{(i)}$ is the actual target value. For a given input $x^{(i)}$, our model $f_{w,b}(x^{(i)})$ predicts a value, which we denote as $\hat{y}^{(i)}$. So,
+$$\hat{y}^{(i)} = f_{w,b}(x^{(i)}) = wx^{(i)} + b$$
+
+The core question is: How do we find $w$ and $b$ such that $\hat{y}^{(i)}$ is close to $y^{(i)}$ for most, if not all, training examples?
+
+---
+
+### Constructing the Cost Function
+
+To quantify how well a line fits the data, we use a **cost function**. This function measures the discrepancy between our model's predictions and the actual target values.
+
+1.  **Error**: For each training example $(x^{(i)}, y^{(i)})$, the **error** is the difference between the predicted value $\hat{y}^{(i)}$ and the actual target value $y^{(i)}$:
+    $$\text{error}^{(i)} = \hat{y}^{(i)} - y^{(i)}$$
+
+2.  **Squared Error**: We then square this error:
+    $$(\text{error}^{(i)})^2 = (\hat{y}^{(i)} - y^{(i)})^2$$
+    Squaring the error ensures that an underestimation (negative error) and an overestimation (positive error) of the same magnitude contribute equally to the total error. It also penalizes larger errors more significantly.
+
+3.  **Sum of Squared Errors**: To get a measure of the total error across the entire training set, we sum these squared errors for all $m$ training examples:
+    $$\sum_{i=1}^{m} (\hat{y}^{(i)} - y^{(i)})^2$$
+    Here, $m$ is the number of training examples.
+
+4.  **Average Squared Error**: If the training set size $m$ increases, this sum will naturally increase. To make the cost function independent of the training set size, we compute the average squared error by dividing by $m$:
+    $$\frac{1}{m} \sum_{i=1}^{m} (\hat{y}^{(i)} - y^{(i)})^2$$
+
+5.  **The Squared Error Cost Function $J(w,b)$**: By convention in machine learning, an additional factor of $1/2$ is included in the denominator. This makes some later calculus derivations (for optimization algorithms like gradient descent) neater. The cost function, denoted as $J(w,b)$, is thus defined as:
+
+    $$J(w,b) = \frac{1}{2m} \sum_{i=1}^{m} (\hat{y}^{(i)} - y^{(i)})^2$$
+
+    Since $\hat{y}^{(i)} = f_{w,b}(x^{(i)})$, we can also write this as:
+
+    $$J(w,b) = \frac{1}{2m} \sum_{i=1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$$
+
+This specific function is known as the **squared error cost function**. It is the most common cost function used for linear regression and many other regression problems due to its effectiveness and mathematical properties.
+
+The ultimate objective is to find the values of the parameters $w$ and $b$ that **minimize** this cost function $J(w,b)$. A smaller $J(w,b)$ means that, on average, the squared differences between our model's predictions and the actual target values are smaller, indicating a better fit of our model to the training data.
+
+```
+        y ^
+          |
+          |   (x^(i), y^(i))  <-- Actual data point (Red 'x')
+          |       X
+          |      /|\
+          |       | error = (ŷ^(i) - y^(i))
+          |      \|/
+          |-------O-------  ŷ^(i) = f_w,b(x^(i)) (Prediction on the line, Blue 'o')
+          |      /
+   f_w,b  |     /
+ (Blue line)|    /
+          |   /
+          +------------------> x
+                x^(i)
+```
+The cost function $J(w,b)$ essentially calculates the average of the squares of these vertical distances (errors) between each actual data point $y^{(i)}$ and the point predicted by our line $\hat{y}^{(i)}$. Our goal is to make this average squared error as small as possible by choosing the optimal $w$ and $b$.
+>>>>>>> Stashed changes
