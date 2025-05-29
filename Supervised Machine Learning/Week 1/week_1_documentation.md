@@ -752,4 +752,3 @@ The ultimate objective is to find the values of the parameters $w$ and $b$ that 
                 x^(i)
 ```
 The cost function $J(w,b)$ essentially calculates the average of the squares of these vertical distances (errors) between each actual data point $y^{(i)}$ and the point predicted by our line $\hat{y}^{(i)}$. Our goal is to make this average squared error as small as possible by choosing the optimal $w$ and $b$.
->>>>>>> Stashed changes
