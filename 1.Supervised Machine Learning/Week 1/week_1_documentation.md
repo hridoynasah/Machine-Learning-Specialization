@@ -1,4 +1,4 @@
-8# Introduction to Machine Learning
+# Introduction to Machine Learning
 
 ## What is Machine Learning?
 
