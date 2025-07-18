@@ -1,63 +1,46 @@
 # Machine Learning Specialization
 
-This repository contains my work and notes from the Machine Learning Specialization course. The course materials are organized into different sections covering various aspects of machine learning.
+This repository contains my work and notes from the Machine Learning Specialization course by Coursera. The course is divided into three main sections:
 
-## Repository Structure
+1. **Supervised Machine Learning**
+   - Regression and Classification
+   - Gradient Descent
+   - Feature Engineering
 
-```
-├── 0. MLS Slides/               # Course presentation slides
-│   └── MLS Slides/
-│       ├── MLS_C1_PDFs/        # Course 1 lecture slides
-│       ├── MLS_C2_PDFs/        # Course 2 lecture slides
-│       └── MLS_C3_PDFs/        # Course 3 lecture slides
-│
-├── 1. Supervised Machine Learning/    # Course 1 materials
-│   ├── Week 1/                       # Week 1 content
-│   │   ├── LAB/                      # Completed lab solutions
-│   │   ├── LAB_W1/                   # Lab exercises
-│   │   └── Slide/                    # Week-specific slides
-│   ├── Week 2/                       # Week 2 content
-│   │   ├── LAB/                      # Completed lab solutions
-│   │   ├── LAB_W2/                   # Lab exercises
-│   │   ├── Programming Assignment/    # Week 2 assignments
-│   │   └── Slide/                    # Week-specific slides
-│   └── Week 3/                       # Week 3 content
-│       ├── LAB/                      # Completed lab solutions
-│       ├── LAB_W3/                   # Lab exercises
-│       ├── Programming Assignment/    # Week 3 assignments
-│       └── Slide/                    # Week-specific slides
-│
-├── 2. Advanced Learning Algorithms/   # Course 2 materials
-│
-└── Extra/                            # Additional resources
-    ├── Certificates/                 # Course certificates
-    ├── clarifying_confusion.ipynb    # Additional notes
-    └── Slicing.ipynb                 # Extra practice
-```
+2. **Advanced Learning Algorithms**
+   - Neural Networks
+   - Decision Trees
+   - Advanced Models
+
+3. **Course Materials**
+   - Weekly Labs and Solutions
+   - Programming Assignments
+   - Lecture Slides
+   - Additional Resources
+
+## Certificate of Completion
+
+<div align="center">
+  <a href="Extra/Certificates/Coursera%201XZ2WHDS8H4C.pdf">
+    <img src="https://img.shields.io/badge/Coursera-Certificate-blue" alt="Coursera Certificate">
+  </a>
+</div>
+
+[View Certificate](Extra/Certificates/Coursera%201XZ2WHDS8H4C.pdf)
 
 ## Course Progress
 
 This repository tracks my progress through the Machine Learning Specialization. I have completed portions of the course and earned a certificate, which can be found in the `Extra/Certificates/` directory.
 
-## Lab Work
-
-The repository contains both the original lab exercises (in LAB_Wx folders) and completed solutions (in LAB folders). Each week includes:
-- Hands-on programming exercises
-- Jupyter notebooks with detailed explanations
-- Programming assignments
-- Supporting files (data, utilities, etc.)
-
-## Certificate
-
-Upon completion of course components, I received a certificate from Coursera. The certificate PDF is stored in `Extra/Certificates/Coursera 1XZ2WHDS8H4C.pdf`.
-
-## Additional Resources
-
-The `Extra` folder contains supplementary materials:
-- Additional practice notebooks
-- Clarification notes
-- Course certificates
-
 ## Development Environment
 
-The notebooks in this repository are developed using Jupyter Notebook and can be run in environments with Python and the required machine learning libraries installed.
+The notebooks in this repository are developed using:
+- Python 3.x
+- Jupyter Notebook
+- Required libraries: NumPy, Matplotlib, Scikit-learn
+- Additional utilities provided in the course
+
+To run these notebooks:
+1. Clone the repository
+2. Install the required Python packages
+3. Open the notebooks using Jupyter Notebook
